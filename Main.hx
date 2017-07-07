@@ -93,7 +93,7 @@ class Main extends Sprite {
 
         private function startGame(): Void {
                 /*
-                 * When the game ends, stargGame() will be called again so
+                 * When the game ends, startGame() will be called again so
                  * cleanup() function should be called here.
                  */
                 cleanup();
