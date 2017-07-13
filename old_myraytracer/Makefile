@@ -21,7 +21,7 @@ else
 endif
 #########################################################################
 FILES=main engine ray surface vector3 material plane raytracer\
-      twister matrix primitive scene util_imgfile
+      matrix primitive scene util_imgfile
 #########################################################################
 CXX=g++
 SRCS=$(FILES:=.cc)

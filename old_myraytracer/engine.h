@@ -8,7 +8,6 @@
 #include "surface.h"
 #include "typedefs.h"
 #include "ray.h"
-#include "twister.h"
 
 class Engine {
 public:
@@ -24,7 +23,6 @@ public:
 private:
 	Surface		*surface_;
 	Scene		*scene_;
-	Twister		twister_;
 
 	Vector3		origin_;
 

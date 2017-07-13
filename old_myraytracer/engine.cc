@@ -290,13 +290,15 @@ Engine::RayTrace(Ray ray, color_t &acc, int depth, real_t rIndex,
 			Vector3 RN2 = RP.Cross(RN1);
 			refl *= kSScale;
 			for (int i = 0; i < SAMPLES; i++) {
-				real_t xoffs;
-				real_t yoffs;
+				real_t xoffs = 0;
+				real_t yoffs = 0;
+				/*
 				do {
 					xoffs = (twister_.Rand()) * drefl;
 					yoffs = (twister_.Rand()) * drefl;
 				} while ((xoffs * xoffs + yoffs * yoffs) > 
 				    (drefl * drefl));
+				    */
 
 				Vector3 R = RP + RN1 * xoffs + RN2 * yoffs * 
 				    drefl;
