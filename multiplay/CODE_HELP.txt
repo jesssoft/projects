@@ -1,0 +1,27 @@
+I wrote the related codes of the ideas at the following.
+
+[Client-side prediction]
+
+	client/game.cc 		Game::OnKeyboard()
+	client/player.cc	Player::UpdatePosDataFromMsg()
+
+[Setting up an authoritative server]
+
+	server/server_d -h	# Display the usage!
+
+[Server time-step]
+	
+	server/game_server.cc	GameServer::OnEventTimer()
+
+[Server reconciliation]
+
+	client/game.cc:573	DEF_MSG_HANDLER(CS_UPDATE_NTY)
+	client/player.cc	Player::OnProcess()
+
+[Sending and receiving time-stamps]
+
+	client/game.cc:507	DEF_MSG_HANDLER(CS_ENTER_WORLD_ACK)
+	client/game.cc:573	DEF_MSG_HANDLER(CS_UPDATE_NTY)
+	client/game.cc 		Game::OnKeyboard()
+
+** END **

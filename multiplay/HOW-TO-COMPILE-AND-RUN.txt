@@ -1,0 +1,50 @@
+I compiled and tested it on Ubuntu 14.04 LTS. The client of this sample is
+using SDL2 so it should be installed first before compiling. you should use
+g++ which supports C++11. 
+
+** HOW TO COMPILE **
+
+1. Installing SDL2
+	./install_libs.sh
+
+2. Compile the common library
+	cd common
+	make
+
+3. Compile the server
+	cd server
+	make
+
+4. Compile the client
+	cd client
+	make
+
+** HOW TO RUN **
+
+1. Run the server
+	cd server
+	./server_d		# default time-step ms is 100ms
+	    or
+	./server_d -t 200	# -t means time-step ms(100ms ~ 1000ms)
+
+2. Run the client on the same machine (case 1)
+	cd client
+	./client_d
+
+3. Run the client on another machine (case 2)
+	cd client
+	./client_d ip
+
+4. Stopping programmes
+	Ctrl + c		# server
+	Ctrl + c		# client console
+	q or esc		# client play window
+
+** ETC **
+
+If you want to compile them in release mode, see the following.
+
+make mode=release
+
+Thanks for your time!
+
