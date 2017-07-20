@@ -1,7 +1,7 @@
 My desktop OS is Ubuntu14 LTS 64bit version, and linux and android were 
 compiled and built on it. The windows version was built on Windows7. Therefore,
 there are 3 prebuilt versions now. I do not have any Mac machine, so I
-could not build Mac or IOS versions.
+could not build Mac or iOS versions.
 
 1. Directory structure
 
