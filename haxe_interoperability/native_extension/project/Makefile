@@ -7,3 +7,5 @@ linux:
 android:
 	lime rebuild ./Build.xml android -clean
 
+windows:
+	lime rebuild ./Build.xml windows -clean
