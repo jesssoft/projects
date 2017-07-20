@@ -6,32 +6,31 @@
 #define NEKO_COMPATIBLE
 #endif
 
-
 #include <hx/CFFI.h>
+#include <string.h>
 #include "Utils.h"
-
 
 using namespace native_extension;
 
+static value 
+native_bytearray() 
+{
+	const char *msg = "Hello Native!";
 
-
-static value native_extension_sample_method (value inputValue) {
-	
-	int returnValue = SampleMethod(val_int(inputValue));
-	return alloc_int(returnValue);
-	
+	return alloc_string_len(msg, strlen(msg));
 }
-DEFINE_PRIM (native_extension_sample_method, 1);
+DEFINE_PRIM(native_bytearray, 0);
 
-
-
-extern "C" void native_extension_main () {
-	
+extern "C" void 
+native_extension_main() 
+{
 	val_int(0); // Fix Neko init
-	
 }
 DEFINE_ENTRY_POINT (native_extension_main);
 
+extern "C" int 
+native_extension_register_prims() 
+{ 
+	return 0; 
+}
 
-
-extern "C" int native_extension_register_prims () { return 0; }
