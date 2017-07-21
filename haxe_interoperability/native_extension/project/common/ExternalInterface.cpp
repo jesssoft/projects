@@ -7,7 +7,6 @@
 #endif
 
 #include <hx/CFFI.h>
-#include <string.h>
 #include "Utils.h"
 
 using namespace native_extension;
@@ -15,9 +14,38 @@ using namespace native_extension;
 static value 
 native_bytearray() 
 {
-	const char *msg = "Hello Native!";
+	/*
+	 * Assume the png variable has png image data
+	 */
+	unsigned char png[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	int png_size = sizeof(png);
 
-	return alloc_string_len(msg, strlen(msg));
+	/*
+	 * Allocate a buffer
+	 */
+	buffer buf = alloc_buffer_len(png_size);
+	unsigned char *ptr = (unsigned char *)buffer_data(buf);
+
+	/*
+	 * Fill in the buf
+	 */
+	for (int i = 0; i < png_size; i++)
+		ptr[i] = png[i];
+
+	/*
+	 * Get the bytes value
+	 */
+	value bytes;
+	bytes = buffer_val(buf);
+
+	/*
+	 * Create a return object
+	 */
+	value obj = alloc_empty_object();
+	alloc_field(obj, val_id("b"), bytes);
+	alloc_field(obj, val_id("length"), alloc_int(png_size));
+
+	return obj;
 }
 DEFINE_PRIM(native_bytearray, 0);
 

@@ -9,6 +9,9 @@ import openfl.text.Font;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
 
+import haxe.io.Bytes;
+import haxe.io.BytesData;
+
 class Main extends Sprite {
 
 	public function new () {
@@ -17,12 +20,10 @@ class Main extends Sprite {
 		var byteArray = getByteArray();
 
 		trace('Length: ${byteArray.length}');
-
 		byteArray.position = 0;
 		while (byteArray.bytesAvailable > 0) {
 			trace('Byte: ${byteArray.readByte()}');
 		}
-
 		trace('Finished!');
 		displayOk();
 	}
@@ -45,17 +46,13 @@ class Main extends Sprite {
 	}
 
 	public static function getByteArray(): ByteArray {
-		var byteArray: ByteArray;
-
 		// call native_bytearray()
 		// transform the result from cpp to a ByteArray
 
-		var str = native_bytearray();
-		trace('Msg: ${str}');
+		var obj = native_bytearray();
+		var bytes = @:privateAccess new Bytes(obj.length, obj.b);
+		var byteArray = ByteArray.fromBytes(bytes);
 
-		byteArray = new ByteArray();
-
-		byteArray.writeUTFBytes(str);
 		return byteArray;
 	}
 
@@ -69,4 +66,3 @@ class Main extends Sprite {
 						0);
 #end
 }
-
